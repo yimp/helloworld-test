@@ -1,0 +1,300 @@
+{
+  "recorded_at_utc": "2026-09-27T14:20:50+00:00",
+  "environment": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "kernel": "6.18.44",
+    "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+    "binutils": "GNU ld (GNU Binutils for Ubuntu) 2.42",
+    "python": "3.12.14",
+    "node": "v24.19.0",
+    "java": "openjdk version \"17.0.20\" 2026-07-21"
+  },
+  "source_bytes": {
+    "hello.s": 228,
+    "hello.c": 69,
+    "hello.cpp": 76,
+    "hello.py": 21,
+    "hello.js": 27,
+    "Hello.java": 94,
+    "Compile.java": 450
+  },
+  "results": {
+    "asm_default": {
+      "build": [
+        "ld",
+        "-o",
+        "hello_asm",
+        "hello.o"
+      ],
+      "command": [
+        "./hello_asm"
+      ],
+      "size_bytes": 8848,
+      "stdout": "Hello World\n",
+      "verified": true,
+      "build_warning": null
+    },
+    "asm_stripped": {
+      "build": [
+        "ld",
+        "-s",
+        "-o",
+        "hello_asm_stripped",
+        "hello.o"
+      ],
+      "command": [
+        "./hello_asm_stripped"
+      ],
+      "size_bytes": 8488,
+      "stdout": "Hello World\n",
+      "verified": true,
+      "build_warning": null
+    },
+    "asm_tiny": {
+      "build": [
+        "ld",
+        "-N",
+        "-s",
+        "-o",
+        "hello_asm_tiny",
+        "hello.o"
+      ],
+      "command": [
+        "./hello_asm_tiny"
+      ],
+      "size_bytes": 456,
+      "stdout": "Hello World\n",
+      "verified": true,
+      "build_warning": "ld: warning: hello_asm_tiny has a LOAD segment with RWX permissions"
+    },
+    "c_default": {
+      "build": [
+        "gcc",
+        "hello.c",
+        "-o",
+        "hello_c"
+      ],
+      "command": [
+        "./hello_c"
+      ],
+      "size_bytes": 15960,
+      "stdout": "Hello World\n",
+      "verified": true,
+      "shared_dependencies_bytes": {
+        "libc.so.6": 2125328,
+        "/lib64/ld-linux-x86-64.so.2": 236616
+      }
+    },
+    "c_dynamic_small": {
+      "build": [
+        "gcc",
+        "-Os",
+        "-s",
+        "hello.c",
+        "-o",
+        "hello_c_small"
+      ],
+      "command": [
+        "./hello_c_small"
+      ],
+      "size_bytes": 14472,
+      "stdout": "Hello World\n",
+      "verified": true,
+      "shared_dependencies_bytes": {
+        "libc.so.6": 2125328,
+        "/lib64/ld-linux-x86-64.so.2": 236616
+      }
+    },
+    "c_static_small": {
+      "build": [
+        "gcc",
+        "-static",
+        "-Os",
+        "-s",
+        "hello.c",
+        "-o",
+        "hello_c_static"
+      ],
+      "command": [
+        "./hello_c_static"
+      ],
+      "size_bytes": 706568,
+      "stdout": "Hello World\n",
+      "verified": true
+    },
+    "cpp_default": {
+      "build": [
+        "g++",
+        "hello.cpp",
+        "-o",
+        "hello_cpp"
+      ],
+      "command": [
+        "./hello_cpp"
+      ],
+      "size_bytes": 16504,
+      "stdout": "Hello World\n",
+      "verified": true,
+      "shared_dependencies_bytes": {
+        "libstdc++.so.6": 2592224,
+        "libc.so.6": 2125328,
+        "libm.so.6": 952616,
+        "/lib64/ld-linux-x86-64.so.2": 236616,
+        "libgcc_s.so.1": 183024
+      }
+    },
+    "cpp_dynamic_small": {
+      "build": [
+        "g++",
+        "-Os",
+        "-s",
+        "hello.cpp",
+        "-o",
+        "hello_cpp_small"
+      ],
+      "command": [
+        "./hello_cpp_small"
+      ],
+      "size_bytes": 14472,
+      "stdout": "Hello World\n",
+      "verified": true,
+      "shared_dependencies_bytes": {
+        "libstdc++.so.6": 2592224,
+        "libc.so.6": 2125328,
+        "libm.so.6": 952616,
+        "/lib64/ld-linux-x86-64.so.2": 236616,
+        "libgcc_s.so.1": 183024
+      }
+    },
+    "cpp_static_small": {
+      "build": [
+        "g++",
+        "-static",
+        "-Os",
+        "-s",
+        "hello.cpp",
+        "-o",
+        "hello_cpp_static"
+      ],
+      "command": [
+        "./hello_cpp_static"
+      ],
+      "size_bytes": 1862280,
+      "stdout": "Hello World\n",
+      "verified": true
+    },
+    "python_source": {
+      "command": [
+        "python3",
+        "hello.py"
+      ],
+      "size_bytes": 21,
+      "requires_external_interpreter": true,
+      "verified": true
+    },
+    "python_zipapp": {
+      "build": "python3 -m zipapp py_app -p '/usr/bin/env python3'",
+      "command": [
+        "./hello.pyz"
+      ],
+      "size_bytes": 164,
+      "stdout": "Hello World\n",
+      "verified": true,
+      "requires_external_interpreter": true
+    },
+    "python_interpreter_file_bytes": 30894944,
+    "node_source": {
+      "command": [
+        "node",
+        "hello.js"
+      ],
+      "size_bytes": 27,
+      "requires_external_runtime": true,
+      "verified": true
+    },
+    "node_runtime_file_bytes": 125989464,
+    "node_sea_preparation_only": {
+      "size_bytes": 60,
+      "runnable": false,
+      "note": "Preparation blob only; no valid injected executable was produced."
+    },
+    "java_source": {
+      "command": [
+        "java",
+        "Hello.java"
+      ],
+      "size_bytes": 94,
+      "requires_external_runtime": true,
+      "verified": true
+    },
+    "java_class": {
+      "command": [
+        "java",
+        "Hello"
+      ],
+      "size_bytes": 411,
+      "requires_external_runtime": true,
+      "verified": true
+    },
+    "java_jar": {
+      "size_bytes": 558,
+      "requires_external_runtime": true,
+      "verified": true
+    },
+    "java_full_jre_app_image": {
+      "size_bytes": 193204190,
+      "verified": true,
+      "includes_full_installed_jre": true,
+      "build": [
+        "jpackage",
+        "--type",
+        "app-image",
+        "--input",
+        "build/java_input",
+        "--main-jar",
+        "Hello.jar",
+        "--name",
+        "HelloWorld",
+        "--runtime-image",
+        "/usr/lib/jvm/java-17-openjdk-amd64",
+        "--dest",
+        "build/java_image"
+      ]
+    }
+  },
+  "unavailable_toolchains": {
+    "Zig": [
+      "zig"
+    ],
+    "Nim": [
+      "nim"
+    ],
+    "Rust": [
+      "rustc"
+    ],
+    "Crystal": [
+      "crystal"
+    ],
+    "Go": [
+      "go"
+    ],
+    "C#": [
+      "dotnet",
+      "mcs",
+      "csc"
+    ],
+    "Swift": [
+      "swiftc"
+    ],
+    "Dart": [
+      "dart"
+    ],
+    "Bun": [
+      "bun"
+    ],
+    "Deno": [
+      "deno"
+    ]
+  }
+}
