@@ -1,0 +1,99 @@
+{
+  "zig": {
+    "version": "0.16.0",
+    "url": "https://ziglang.org/download/0.16.0/zig-x86_64-linux-0.16.0.tar.xz",
+    "upstream_sha256": "70e49664a74374b48b51e6f3fdfbf437f6395d42509050588bd49abe52ba3d00",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/zig-zig-x86_64-linux-0.16.0.tar.xz",
+    "download_sha256": "70e49664a74374b48b51e6f3fdfbf437f6395d42509050588bd49abe52ba3d00",
+    "stored_archive_verified": true
+  },
+  "nim": {
+    "version": "2.2.12",
+    "url": "https://nim-lang.org/download/nim-2.2.12-linux_x64.tar.xz",
+    "upstream_sha256": "7df1611449a6842af69322aa2c1206942982650a5f6bc0d37bc8ec109932f638",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/nim-nim-2.2.12-linux_x64.tar.xz",
+    "download_sha256": "7df1611449a6842af69322aa2c1206942982650a5f6bc0d37bc8ec109932f638",
+    "stored_archive_verified": true
+  },
+  "crystal": {
+    "version": "1.21.1",
+    "url": "https://github.com/crystal-lang/crystal/releases/download/1.21.1/crystal-1.21.1-1-linux-x86_64-bundled.tar.gz",
+    "upstream_sha256": "391dff4244d8d11c4422def9a2f930c9ba9fc9b7c85a20cbcc494472ab77bc0e",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/crystal-crystal-1.21.1-1-linux-x86_64-bundled.tar.gz",
+    "download_sha256": "391dff4244d8d11c4422def9a2f930c9ba9fc9b7c85a20cbcc494472ab77bc0e",
+    "stored_archive_verified": true
+  },
+  "go": {
+    "version": "go1.27.1",
+    "url": "https://go.dev/dl/go1.27.1.linux-amd64.tar.gz",
+    "upstream_sha256": "63d339f0da5ab53635a56f2490a7984dfe12dfcff22ad749f63edaf590168445",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/go-go1.27.1.linux-amd64.tar.gz",
+    "download_sha256": "63d339f0da5ab53635a56f2490a7984dfe12dfcff22ad749f63edaf590168445",
+    "stored_archive_verified": true
+  },
+  "dotnet": {
+    "version": "10.0.401",
+    "url": "https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.401/dotnet-sdk-10.0.401-linux-x64.tar.gz",
+    "upstream_sha512": "51c8b999af9e8dd9998c9edc5944e19a90788862068acd38694e098889054ce8c23d4f0c5cccfa16bf187d044562359e5ee69a9f8ad0bbe913ba90311fbce25b",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/dotnet-dotnet-sdk-10.0.401-linux-x64.tar.gz",
+    "download_sha256": "137268c8ad939c064ff1ee2a6fdf0899d8725377114ea012fbd1ad5fa2550418",
+    "stored_archive_verified": true
+  },
+  "dart": {
+    "version": "3.13.4",
+    "url": "https://storage.googleapis.com/dart-archive/channels/stable/release/3.13.4/sdk/dartsdk-linux-x64-release.zip",
+    "upstream_sha256": "6487a10df5eab890d746d14a55f4c70bec3c1c0633f51804eb504cbc0fc395bb",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/dart-dartsdk-linux-x64-release.zip",
+    "download_sha256": "6487a10df5eab890d746d14a55f4c70bec3c1c0633f51804eb504cbc0fc395bb",
+    "stored_archive_verified": true,
+    "transport_url": "https://storage.flutter-io.cn/dart-archive/channels/stable/release/3.13.4/sdk/dartsdk-linux-x64-release.zip"
+  },
+  "bun": {
+    "version": "bun-v1.4.2",
+    "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.4.2/bun-linux-x64.zip",
+    "upstream_sha256": "36368faef7527875d5ffa52e53cd48021741f2a83eb6208a8dd64068d422a913",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/bun-bun-linux-x64.zip",
+    "download_sha256": "36368faef7527875d5ffa52e53cd48021741f2a83eb6208a8dd64068d422a913",
+    "stored_archive_verified": true
+  },
+  "deno": {
+    "version": "v2.9.7",
+    "url": "https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-unknown-linux-gnu.zip",
+    "upstream_sha256": "c6527f24f4b16031d3ae4fa9f658d5f11534c8d84ce7dc8502420280919c3490",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/deno-deno-x86_64-unknown-linux-gnu.zip",
+    "download_sha256": "c6527f24f4b16031d3ae4fa9f658d5f11534c8d84ce7dc8502420280919c3490",
+    "stored_archive_verified": true
+  },
+  "node": {
+    "version": "v24.21.0",
+    "url": "https://nodejs.org/dist/v24.21.0/node-v24.21.0-linux-x64.tar.xz",
+    "upstream_sha256": "fd8e59d5a511510f6a298afb548f18c7d2b1be404d8b4a27d94fbe49f56cb2d6",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/node-node-v24.21.0-linux-x64.tar.xz",
+    "download_sha256": "fd8e59d5a511510f6a298afb548f18c7d2b1be404d8b4a27d94fbe49f56cb2d6",
+    "stored_archive_verified": true
+  },
+  "java": {
+    "version": "graal-25.4.4.1.1",
+    "url": "https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.4.4.1.1/graalvm-community-jdk-25i4-25.0.4.1.1_linux-x64_bin.tar.gz",
+    "upstream_sha256": "05ccbbe783210b6886ff7b08fcd0b061c5dce4852b05db87284fc0e24abb08e2",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/java-graalvm-community-jdk-25i4-25.0.4.1.1_linux-x64_bin.tar.gz",
+    "download_sha256": "05ccbbe783210b6886ff7b08fcd0b061c5dce4852b05db87284fc0e24abb08e2",
+    "stored_archive_verified": true
+  },
+  "rust": {
+    "version": "1.98.1",
+    "url": "https://static.rust-lang.org/rustup/dist/x86_64-unknown-linux-gnu/rustup-init",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/rust-rustup-init",
+    "download_sha256": "dda7234360b7f578ca8b0ddcb80145646fa61a67c1720a5abc7051b35c9fcb71",
+    "stored_archive_verified": true
+  },
+  "swiftly": {
+    "version": "1.2.0",
+    "url": "https://download.swift.org/swiftly/linux/swiftly-x86_64.tar.gz",
+    "archive_path": "/mnt/sdb/helloworld-test/downloads/swiftly-swiftly-x86_64.tar.gz",
+    "download_sha256": "0b26b568811404374c7d7f07276b6aad4145db5d1893a45f307de6a94ca8d9c3",
+    "swift_version": "6.3.3",
+    "stored_archive_verified": true,
+    "selected_toolchain_path": "/mnt/sdb/helloworld-test/toolchains/swift/6.3.3"
+  }
+}

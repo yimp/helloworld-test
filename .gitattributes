@@ -1,0 +1,2 @@
+# Keep scripts executable by Linux shells and measurement source hashes stable on Windows.
+* text=auto eol=lf

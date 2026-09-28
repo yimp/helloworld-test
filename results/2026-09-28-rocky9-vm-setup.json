@@ -1,0 +1,567 @@
+{
+  "recorded_at_utc": "2026-09-28T06:13:58.348298+00:00",
+  "purpose": "Toolchain readiness; not experimental size results",
+  "environment": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "kernel": "5.14.0-284.30.1.el9_2.x86_64",
+    "os_release": "NAME=\"Rocky Linux\"\nVERSION=\"9.2 (Blue Onyx)\"\nID=\"rocky\"\nID_LIKE=\"rhel centos fedora\"\nVERSION_ID=\"9.2\"\nPLATFORM_ID=\"platform:el9\"\nPRETTY_NAME=\"Rocky Linux 9.2 (Blue Onyx)\"\nANSI_COLOR=\"0;32\"\nLOGO=\"fedora-logo-icon\"\nCPE_NAME=\"cpe:/o:rocky:rocky:9::baseos\"\nHOME_URL=\"https://rockylinux.org/\"\nBUG_REPORT_URL=\"https://bugs.rockylinux.org/\"\nSUPPORT_END=\"2032-05-31\"\nROCKY_SUPPORT_PRODUCT=\"Rocky-Linux-9\"\nROCKY_SUPPORT_PRODUCT_VERSION=\"9.2\"\nREDHAT_SUPPORT_PRODUCT=\"Rocky Linux\"\nREDHAT_SUPPORT_PRODUCT_VERSION=\"9.2\"\n",
+    "disk": "Filesystem            1B-blocks        Used   Available Use% Mounted on\n/dev/mapper/rl-root 36929585152 24260796416 12668788736  66% /\n/dev/sdb            64357400576 19203981312 45153419264  30% /mnt/sdb\n",
+    "data_mount": "/mnt/sdb /dev/sdb xfs    rw,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota\n",
+    "workspace_mount": "/home/dev/common //192.168.128.45/common cifs   rw,relatime,vers=3.1.1,cache=strict,username=杨琰,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.128.45,file_mode=0755,dir_mode=0755,soft,nounix,serverino,mapposix,rsize=4194304,wsize=4194304,bsize=1048576,echo_interval=60,actimeo=1\n",
+    "cpu": "Architecture:                    x86_64\nCPU op-mode(s):                  32-bit, 64-bit\nAddress sizes:                   45 bits physical, 48 bits virtual\nByte Order:                      Little Endian\nCPU(s):                          12\nOn-line CPU(s) list:             0-11\nVendor ID:                       GenuineIntel\nBIOS Vendor ID:                  GenuineIntel\nModel name:                      Intel(R) Xeon(R) Silver 4210 CPU @ 2.20GHz\nBIOS Model name:                 Intel(R) Xeon(R) Silver 4210 CPU @ 2.20GHz\nCPU family:                      6\nModel:                           85\nThread(s) per core:              1\nCore(s) per socket:              6\nSocket(s):                       2\nStepping:                        7\nBogoMIPS:                        4389.68\nFlags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon nopl xtopology tsc_reliable nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat pku ospke avx512_vnni md_clear flush_l1d arch_capabilities\nHypervisor vendor:               VMware\nVirtualization type:             full\nL1d cache:                       384 KiB (12 instances)\nL1i cache:                       384 KiB (12 instances)\nL2 cache:                        12 MiB (12 instances)\nL3 cache:                        27.5 MiB (2 instances)\nNUMA node(s):                    2\nNUMA node0 CPU(s):               0-5\nNUMA node1 CPU(s):               6-11\nVulnerability Itlb multihit:     KVM: Mitigation: VMX unsupported\nVulnerability L1tf:              Not affected\nVulnerability Mds:               Not affected\nVulnerability Meltdown:          Not affected\nVulnerability Mmio stale data:   Vulnerable: Clear CPU buffers attempted, no microcode; SMT Host state unknown\nVulnerability Retbleed:          Mitigation; Enhanced IBRS\nVulnerability Spec store bypass: Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:        Mitigation; Enhanced IBRS, IBPB conditional, RSB filling, PBRSB-eIBRS SW sequence\nVulnerability Srbds:             Not affected\nVulnerability Tsx async abort:   Not affected",
+    "memory": "total        used        free      shared  buff/cache   available\nMem:      8058671104  1524850688  1798803456    60805120  5192093696  6533820416\nSwap:     4294963200           0  4294963200",
+    "final_disk": "Filesystem            1B-blocks        Used   Available Use% Mounted on\n/dev/mapper/rl-root 36929585152 24260587520 12668997632  66% /\n/dev/sdb            64357400576 19021246464 45336154112  30% /mnt/sdb"
+  },
+  "tests": {
+    "assembly": {
+      "build": [
+        [
+          "as",
+          "hello.s",
+          "-o",
+          "hello.o"
+        ],
+        [
+          "ld",
+          "hello.o",
+          "-o",
+          "hello-asm"
+        ]
+      ],
+      "command": [
+        "./hello-asm"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "c": {
+      "build": [
+        [
+          "gcc",
+          "hello.c",
+          "-o",
+          "hello-c"
+        ]
+      ],
+      "command": [
+        "./hello-c"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "cpp": {
+      "build": [
+        [
+          "g++",
+          "hello.cpp",
+          "-o",
+          "hello-cpp"
+        ]
+      ],
+      "command": [
+        "./hello-cpp"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "c_static": {
+      "build": [
+        [
+          "gcc",
+          "-static",
+          "-L/mnt/sdb/helloworld-test/toolchains/static-libs/usr/lib64",
+          "-L/mnt/sdb/helloworld-test/toolchains/static-libs/usr/lib/gcc/x86_64-redhat-linux/11",
+          "hello.c",
+          "-o",
+          "hello-c-static"
+        ]
+      ],
+      "command": [
+        "./hello-c-static"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "cpp_static": {
+      "build": [
+        [
+          "g++",
+          "-static",
+          "-L/mnt/sdb/helloworld-test/toolchains/static-libs/usr/lib64",
+          "-L/mnt/sdb/helloworld-test/toolchains/static-libs/usr/lib/gcc/x86_64-redhat-linux/11",
+          "hello.cpp",
+          "-o",
+          "hello-cpp-static"
+        ]
+      ],
+      "command": [
+        "./hello-cpp-static"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "zig": {
+      "build": [
+        [
+          "zig",
+          "build-exe",
+          "hello.zig",
+          "-lc",
+          "-femit-bin=hello-zig"
+        ]
+      ],
+      "command": [
+        "./hello-zig"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "nim": {
+      "build": [
+        [
+          "nim",
+          "c",
+          "--nimcache:/mnt/sdb/helloworld-test/build/setup-smoke/nimcache",
+          "--out:hello-nim",
+          "hello.nim"
+        ]
+      ],
+      "command": [
+        "./hello-nim"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "rust": {
+      "build": [
+        [
+          "rustc",
+          "hello.rs",
+          "-o",
+          "hello-rust"
+        ]
+      ],
+      "command": [
+        "./hello-rust"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "crystal": {
+      "build": [
+        [
+          "crystal",
+          "build",
+          "hello.cr",
+          "-o",
+          "hello-crystal"
+        ]
+      ],
+      "command": [
+        "./hello-crystal"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "go": {
+      "build": [
+        [
+          "go",
+          "build",
+          "-o",
+          "hello-go",
+          "hello.go"
+        ]
+      ],
+      "command": [
+        "./hello-go"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "csharp": {
+      "build": [
+        [
+          "dotnet",
+          "publish",
+          "dotnet/Hello.csproj",
+          "-c",
+          "Release",
+          "-r",
+          "linux-x64",
+          "--self-contained",
+          "true",
+          "-o",
+          "dotnet-publish"
+        ]
+      ],
+      "command": [
+        "./dotnet-publish/Hello"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "csharp_aot": {
+      "build": [
+        [
+          "dotnet",
+          "publish",
+          "dotnet/Hello.csproj",
+          "-c",
+          "Release",
+          "-r",
+          "linux-x64",
+          "-p:PublishAot=true",
+          "-o",
+          "dotnet-aot"
+        ]
+      ],
+      "command": [
+        "./dotnet-aot/Hello"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "swift": {
+      "build": [
+        [
+          "swiftc",
+          "-module-cache-path",
+          "/mnt/sdb/helloworld-test/cache/swift-modules",
+          "hello.swift",
+          "-o",
+          "hello-swift"
+        ]
+      ],
+      "command": [
+        "./hello-swift"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "dart": {
+      "build": [
+        [
+          "dart",
+          "compile",
+          "exe",
+          "hello.dart",
+          "-o",
+          "hello-dart"
+        ]
+      ],
+      "command": [
+        "./hello-dart"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "python_packaged": {
+      "build": [
+        [
+          "pyinstaller",
+          "--onefile",
+          "--noconfirm",
+          "--name",
+          "hello-python",
+          "hello.py"
+        ]
+      ],
+      "command": [
+        "./dist/hello-python"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "java": {
+      "build": [
+        [
+          "javac",
+          "-J-Djava.io.tmpdir=/mnt/sdb/helloworld-test/tmp",
+          "Hello.java"
+        ]
+      ],
+      "command": [
+        "java",
+        "-Djava.io.tmpdir=/mnt/sdb/helloworld-test/tmp",
+        "Hello"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "java_jpackage": {
+      "build": [
+        [
+          "javac",
+          "-J-Djava.io.tmpdir=/mnt/sdb/helloworld-test/tmp",
+          "Hello.java"
+        ],
+        [
+          "jar",
+          "--create",
+          "--file",
+          "java-input/Hello.jar",
+          "--main-class",
+          "Hello",
+          "Hello.class"
+        ],
+        [
+          "jpackage",
+          "-J-Djava.io.tmpdir=/mnt/sdb/helloworld-test/tmp",
+          "--type",
+          "app-image",
+          "--input",
+          "java-input",
+          "--main-jar",
+          "Hello.jar",
+          "--name",
+          "HelloJava",
+          "--dest",
+          "java-package"
+        ]
+      ],
+      "command": [
+        "./java-package/HelloJava/bin/HelloJava"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "java_native_image": {
+      "build": [
+        [
+          "native-image",
+          "--no-fallback",
+          "-march=x86-64",
+          "-J-Xmx3g",
+          "-J-Djava.io.tmpdir=/mnt/sdb/helloworld-test/tmp",
+          "-H:NativeLinkerOption=-L/mnt/sdb/helloworld-test/toolchains/static-libs/usr/lib/gcc/x86_64-redhat-linux/11",
+          "Hello",
+          "hello-java-native"
+        ]
+      ],
+      "command": [
+        "./hello-java-native"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "bun": {
+      "build": [
+        [
+          "bun",
+          "build",
+          "--compile",
+          "hello.js",
+          "--outfile",
+          "hello-bun"
+        ]
+      ],
+      "command": [
+        "./hello-bun"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "deno": {
+      "build": [
+        [
+          "deno",
+          "compile",
+          "--output",
+          "hello-deno",
+          "hello.js"
+        ]
+      ],
+      "command": [
+        "./hello-deno"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    },
+    "node_sea": {
+      "build": [
+        [
+          "node",
+          "--experimental-sea-config",
+          "sea.json"
+        ],
+        [
+          "postject",
+          "hello-node",
+          "NODE_SEA_BLOB",
+          "sea.blob",
+          "--sentinel-fuse",
+          "NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2"
+        ]
+      ],
+      "command": [
+        "./hello-node"
+      ],
+      "verified": true,
+      "stdout": "Hello World\n",
+      "exit_code": 0
+    }
+  },
+  "toolchains": {
+    "gcc": {
+      "path": "/usr/bin/gcc",
+      "realpath": "/usr/bin/gcc",
+      "version": "gcc (GCC) 11.3.1 20221121 (Red Hat 11.3.1-4)\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+    },
+    "g++": {
+      "path": "/usr/bin/g++",
+      "realpath": "/usr/bin/g++",
+      "version": "g++ (GCC) 11.3.1 20221121 (Red Hat 11.3.1-4)\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+    },
+    "clang": {
+      "path": "/mnt/sdb/helloworld-test/toolchains/swiftly/bin/clang",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/swiftly/swiftly",
+      "version": "clang version 21.0.0 (https://github.com/swiftlang/llvm-project.git 82cdc19fa54d566969527b56f587ea8ea30bef51)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /mnt/sdb/helloworld-test/toolchains/swift/6.3.3/usr/bin"
+    },
+    "python3": {
+      "path": "/usr/bin/python3",
+      "realpath": "/usr/bin/python3.9",
+      "version": "Python 3.9.16"
+    },
+    "node": {
+      "path": "/mnt/sdb/helloworld-test/bin/node",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/node/bin/node",
+      "version": "v24.21.0"
+    },
+    "javac": {
+      "path": "/mnt/sdb/helloworld-test/bin/javac",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/java/bin/javac",
+      "version": "javac 25.0.4.1.1"
+    },
+    "java": {
+      "path": "/mnt/sdb/helloworld-test/bin/java",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/java/bin/java",
+      "version": "openjdk version \"25.0.4.1.1\" 2026-08-18\nOpenJDK Runtime Environment GraalVM CE 25.4.4.1.1+1.1 (build 25.0.4.1.1+1-jvmci-25.4-b23)\nOpenJDK 64-Bit Server VM GraalVM CE 25.4.4.1.1+1.1 (build 25.0.4.1.1+1-jvmci-25.4-b23, mixed mode, sharing)"
+    },
+    "jpackage": {
+      "path": "/mnt/sdb/helloworld-test/bin/jpackage",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/java/bin/jpackage",
+      "version": "25.0.4.1.1"
+    },
+    "native-image": {
+      "path": "/mnt/sdb/helloworld-test/bin/native-image",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/java/lib/svm/bin/native-image",
+      "version": "native-image 25.0.4.1.1 2026-08-18\nGraalVM Runtime Environment GraalVM CE 25.4.4.1.1+1.1 (build 25.0.4.1.1+1-jvmci-25.4-b23)\nSubstrate VM GraalVM CE 25.4.4.1.1+1.1 (build 25.0.4.1.1+1, serial gc, compressed references)"
+    },
+    "zig": {
+      "path": "/mnt/sdb/helloworld-test/bin/zig",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/zig/zig",
+      "version": "0.16.0"
+    },
+    "nim": {
+      "path": "/mnt/sdb/helloworld-test/bin/nim",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/nim/bin/nim",
+      "version": "Nim Compiler Version 2.2.12 [Linux: amd64]\nCompiled at 2026-09-08\nCopyright (c) 2006-2026 by Andreas Rumpf\n\ngit hash: 8e8fbf60693418dc95bb0d762fd660231d08a583\nactive boot switches: -d:release"
+    },
+    "rustc": {
+      "path": "/mnt/sdb/helloworld-test/toolchains/cargo/bin/rustc",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/cargo/bin/rustup",
+      "version": "rustc 1.98.1 (48a229cea 2026-09-01)"
+    },
+    "cargo": {
+      "path": "/mnt/sdb/helloworld-test/toolchains/cargo/bin/cargo",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/cargo/bin/rustup",
+      "version": "cargo 1.98.1 (797e8a9bc 2026-08-05)"
+    },
+    "crystal": {
+      "path": "/mnt/sdb/helloworld-test/bin/crystal",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/crystal/crystal-1.21.1-1/bin/crystal",
+      "version": "Crystal 1.21.1 [73ea5c2b1] (2026-09-26)\n\nLLVM: 20.1.8\nDefault target: x86_64-unknown-linux-gnu"
+    },
+    "go": {
+      "path": "/mnt/sdb/helloworld-test/bin/go",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/go/bin/go",
+      "version": "go version go1.27.1 linux/amd64"
+    },
+    "dotnet": {
+      "path": "/mnt/sdb/helloworld-test/bin/dotnet",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/dotnet/dotnet",
+      "version": ".NET SDK:\n Version:           10.0.401\n Commit:            e34a38d2ae\n Workload version:  10.0.400-manifests.63b36e85\n MSBuild version:   18.9.11+e34a38d2a\n\nRuntime Environment:\n OS Name:     rocky\n OS Version:  9.2\n OS Platform: Linux\n RID:         linux-x64\n Base Path:   /mnt/sdb/helloworld-test/toolchains/dotnet/sdk/10.0.401/\n\n.NET workloads installed:\nThere are no installed workloads to display.\nConfigured to use workload sets when installing new manifests.\nNo workload sets are installed. Run \"dotnet workload restore\" to install a workload set.\n\nHost:\n  Version:      10.0.12\n  Architecture: x64\n  Commit:       95017c711e\n\n.NET SDKs installed:\n  10.0.401 [/mnt/sdb/helloworld-test/toolchains/dotnet/sdk]\n\n.NET runtimes installed:\n  Microsoft.AspNetCore.App 10.0.12 [/mnt/sdb/helloworld-test/toolchains/dotnet/shared/Microsoft.AspNetCore.App]\n  Microsoft.NETCore.App 10.0.12 [/mnt/sdb/helloworld-test/toolchains/dotnet/shared/Microsoft.NETCore.App]\n\nOther architectures found:\n  None\n\nEnvironment variables:\n  DOTNET_CLI_HOME                          [/mnt/sdb/helloworld-test/cache/dotnet-cli]\n  DOTNET_CLI_TELEMETRY_OPTOUT              [1]\n  DOTNET_NOLOGO                            [1]\n  DOTNET_ROOT                              [/mnt/sdb/helloworld-test/toolchains/dotnet]\n  DOTNET_SKIP_FIRST_TIME_EXPERIENCE        [1]\n\nglobal.json file:\n  Not found\n\nLearn more:\n  https://aka.ms/dotnet/info\n\nDownload .NET:\n  https://aka.ms/dotnet/download"
+    },
+    "swiftc": {
+      "path": "/mnt/sdb/helloworld-test/toolchains/swiftly/bin/swiftc",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/swiftly/swiftly",
+      "version": "Swift version 6.3.3 (swift-6.3.3-RELEASE)\nTarget: x86_64-unknown-linux-gnu"
+    },
+    "dart": {
+      "path": "/mnt/sdb/helloworld-test/bin/dart",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/dart/dart-sdk/bin/dart",
+      "version": "Dart SDK version: 3.13.4 (stable) (Tue Sep 15 01:01:15 2026 -0700) on \"linux_x64\""
+    },
+    "bun": {
+      "path": "/mnt/sdb/helloworld-test/bin/bun",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/bun/bun-linux-x64/bun",
+      "version": "1.4.2"
+    },
+    "deno": {
+      "path": "/mnt/sdb/helloworld-test/bin/deno",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/deno/deno",
+      "version": "deno 2.9.7 (stable, release, x86_64-unknown-linux-gnu)\nv8 15.0.245.2-rusty\ntypescript 6.0.3"
+    },
+    "pyinstaller": {
+      "path": "/mnt/sdb/helloworld-test/bin/pyinstaller",
+      "realpath": "/mnt/sdb/helloworld-test/toolchains/python-packaging/bin/pyinstaller",
+      "version": "6.22.3"
+    }
+  },
+  "finalized_at_utc": "2026-09-28T06:18:39.785092+00:00",
+  "storage": {
+    "dedicated_root": "/mnt/sdb/helloworld-test",
+    "disk_usage_bytes": 11249041408,
+    "category_usage": "8729280512\t/mnt/sdb/helloworld-test/toolchains\n1225474048\t/mnt/sdb/helloworld-test/downloads\n571109376\t/mnt/sdb/helloworld-test/cache\n722587648\t/mnt/sdb/helloworld-test/build",
+    "removed_incomplete_downloads": [
+      {
+        "path": "/mnt/sdb/helloworld-test/downloads/zig-zig-x86_64-linux-0.16.0.tar.xz.part",
+        "size_bytes": 6844416
+      },
+      {
+        "path": "/mnt/sdb/helloworld-test/downloads/dart-dartsdk-linux-x64-release.zip.part",
+        "size_bytes": 112119808
+      },
+      {
+        "path": "/mnt/sdb/helloworld-test/downloads/dart-dartsdk-linux-x64-release.zip.transfer.part",
+        "size_bytes": 63963136
+      },
+      {
+        "path": "/mnt/sdb/helloworld-test/downloads/node-node-v24.21.0-linux-x64.tar.xz.part",
+        "size_bytes": 10010624
+      }
+    ],
+    "system_packages_installed_or_upgraded": false,
+    "note": "Uses existing system GCC/Binutils/Python and system shared libraries; new SDKs and experiment caches are in the dedicated data-disk prefix."
+  },
+  "packaging_requirements": "altgraph==0.17.5\nimportlib_metadata==8.7.1\npackaging==26.3\npyinstaller==6.22.3\npyinstaller-hooks-contrib==2026.7\nzipp==3.23.1\n",
+  "npm_packaging_versions": "/mnt/sdb/helloworld-test/toolchains/npm/lib\n└── postject@1.0.0-alpha.6\n\n",
+  "static_libraries": {
+    "rpm_sha256": "430ebaa0a499605a5f8dee511f6d505fb1117315024e664a0cb385241a5100a5  /mnt/sdb/helloworld-test/downloads/rpms/glibc-static-2.34-60.el9_2.7.x86_64.rpm\n683a76fbe06949fd884d4ef07a81dc351bb103614e700416dff24cefac7cfcd0  /mnt/sdb/helloworld-test/downloads/rpms/libstdc++-static-11.3.1-4.3.el9.x86_64.rpm\n",
+    "relocated_linker_script": "/* GNU ld script\n*/\nOUTPUT_FORMAT(elf64-x86-64)\nGROUP ( libm-2.34.a libmvec.a )\n",
+    "original_linker_script": "/* GNU ld script\n*/\nOUTPUT_FORMAT(elf64-x86-64)\nGROUP ( /usr/lib64/libm-2.34.a /usr/lib64/libmvec.a )\n"
+  },
+  "completed_checks": 21
+}

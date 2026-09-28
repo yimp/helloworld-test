@@ -1,0 +1,52 @@
+id,language,profile,status,application_bytes,application_files,deployment_bytes,deployment_files,gzip_bytes,internal_compression,note
+asm-default,Assembly,default,passed,8896,1,8896,1,463,none,Linux write/exit syscall
+asm-stripped,Assembly,stripped,passed,8488,1,8488,1,343,none,Linux write/exit syscall
+asm-tiny-rwx,Assembly,tiny-rwx,passed,456,1,456,1,283,none,"Linux write/exit syscall; RWX LOAD segment, appendix only"
+c-default,C,default,passed,25792,1,25792,1,3026,none,puts
+c-size-dynamic,C,size-dynamic,passed,21952,1,21952,1,2099,none,puts
+c-size-static,C,size-static,passed,1527184,1,1527184,1,328632,none,puts
+cpp-default,C++,default,passed,26240,1,2440904,3,866236,none,iostream; external libstdc++/libgcc counted in B when dynamic
+cpp-size-dynamic,C++,size-dynamic,passed,21976,1,2436640,3,864451,none,iostream; external libstdc++/libgcc counted in B when dynamic
+cpp-size-static,C++,size-static,passed,2904448,1,2904448,1,726898,none,iostream; external libstdc++/libgcc counted in B when dynamic
+zig-debug,Zig,Debug std.Io,passed,10744674,1,10744674,1,2190619,none,
+zig-small,Zig,ReleaseSmall std.Io,passed,145216,1,145216,1,62414,none,
+zig-libc-small,Zig,ReleaseSmall libc puts,passed,4352,1,4352,1,1731,none,Different output API; separate source
+nim-default,Nim,default ORC,passed,104664,1,104664,1,31986,none,
+nim-small,Nim,release size ORC,passed,38720,1,38720,1,13218,none,
+rust-default,Rust,default,passed,4506728,1,4614872,2,1199016,none,default panic=unwind
+rust-release,Rust,release,passed,4505792,1,4613936,2,1198675,none,default panic=unwind
+rust-release-stripped,Rust,release-stripped,passed,350392,1,458536,2,220631,none,default panic=unwind
+rust-size-abort,Rust,size-abort,passed,292200,1,400344,2,197607,none,panic=abort changes panic behavior
+crystal-default,Crystal,default,passed,2101056,1,2209200,2,713796,none,
+crystal-release,Crystal,release stripped,passed,522352,1,630496,2,271814,none,
+go-default,Go,default,passed,2346729,1,2346729,1,1416596,none,
+go-stripped,Go,stripped,passed,1507488,1,1507488,1,681432,none,
+csharp-framework,C#,Release framework-dependent,passed,4358,3,,,1997,none,External .NET runtime; DLL/config directory
+csharp-selfcontained,C#,Release self-contained,passed,82607153,191,85021817,193,36141733,none,"Directory deployment, full .NET runtime"
+csharp-trimmed,C#,Release self-contained trimmed,passed,23908099,29,26322763,31,10412904,none,Trimming changes reflection availability
+csharp-singlefile,C#,trimmed compressed single-file,passed,13051818,1,15466482,3,6900973,internal compression + runtime extraction,Native libraries extracted to /tmp; validation covers this output path only
+csharp-aot,C#,NativeAOT Release,passed,1271056,1,1271056,1,612704,none,External .dbg excluded; NativeAOT has reflection/dynamic-code limits
+csharp-aot-small-invariant,C#,NativeAOT size invariant,passed,1118960,1,1118960,1,546170,none,Size preference + invariant globalization; culture-specific behavior is restricted; external .dbg excluded
+swift-default,Swift,default,passed,22392,1,17181008,12,5181204,none,Swift shared runtime counted in B
+swift-size-dynamic,Swift,size-dynamic,passed,12632,1,16753328,11,5092104,none,Swift shared runtime counted in B
+swift-size-static-stdlib,Swift,size-static-stdlib,passed,6345896,1,6454040,2,2334181,none,-static-stdlib does not mean all system libraries are static
+dart-source,Dart,source,passed,38,1,,,143,none,External Dart runtime
+dart-aot,Dart,compile exe,passed,6501832,1,6501832,1,2674081,none,Dart AOT executable
+python-source,Python,source,passed,21,1,,,125,none,External Python runtime
+python-zipapp,Python,zipapp,passed,141,1,,,199,none,ZIP container; external Python runtime
+python-onedir,Python,PyInstaller onedir,passed,13342827,38,13342925,42,5889724,internal PYZ compression,Bootloader + Python runtime; no UPX
+python-onefile,Python,PyInstaller onefile,passed,5937360,1,6039912,2,5901380,internal PYZ compression + runtime extraction,Bootloader + Python runtime; no UPX
+java-class,Java,class,passed,411,1,,,377,none,External JVM
+java-jar,Java,JAR,passed,738,1,,,665,JAR ZIP compression,External JVM; JAR uses ZIP compression
+java-jlink-base,Java,JAR + jlink java.base,passed,85183548,50,85286100,51,36816419,jlink zip-6 resources + JAR,Module set differs; full runtime directory counted
+java-jlink-all,Java,JAR + jlink ALL-MODULE-PATH,passed,159405727,355,166517103,373,103760494,jlink zip-6 resources + JAR,Module set differs; full runtime directory counted
+java-jpackage,Java,jpackage java.base app-image,passed,86962394,55,87064946,56,37371454,jlink zip-6 resources + JAR,"Entire launcher/app/runtime image, not launcher alone"
+java-native-default,Java,Native Image default,passed,4946600,1,5049152,2,1897446,none,Closed-world AOT; no JVM; --no-fallback
+java-native-size,Java,Native Image size,passed,4241840,1,4344392,2,1660992,none,Closed-world AOT; no JVM; --no-fallback
+bun-source,Bun,JS source,passed,28,1,,,132,none,External Bun runtime
+deno-source,Deno,JS source,passed,28,1,,,132,none,External Deno runtime
+node-source,Node.js,JS source,passed,28,1,,,132,none,External Node.js runtime
+bun-compile,Bun,compile,passed,81315296,1,81315296,1,36538539,none,Embedded Bun runtime
+bun-minify,Bun,compile minify,passed,81315296,1,81315296,1,36538535,none,Embedded Bun runtime; JS minified
+deno-compile,Deno,compile,passed,104567752,1,104675896,2,34293647,none,Embedded Deno runtime
+node-sea,Node.js,SEA,passed,126684352,1,129099016,3,43881596,none,Official Node SEA blob + copied Node executable
